@@ -1,14 +1,13 @@
-Here are my latest blog posts:
-
-- [Post 1](./_posts/post1.md)
-- [Post 2](./_posts/post2.md)
-- [Post 3](./_posts/post3.md)
+---
+layout: default
+title: "Blog"
+---
 
 ## Blog
 
-{% for post in site.posts %}
+{% for post in paginator.posts %}
 ### [{{ post.title }}]({{ post.url }})
-{{ post.excerpt }}  
+{{ post.excerpt | strip_html }}  
 [Read More]({{ post.url }})
 ---
 {% endfor %}
