@@ -1,13 +1,13 @@
 ---
 layout: default
-title: "Blog"
+title: "!Blog"
 ---
 
 ## Blog
 
-{% for post in paginator.posts %}
+{% for post in site.posts %}
 ### [{{ post.title }}]({{ post.url }})
-{{ post.excerpt | strip_html }}  
+{{ post.excerpt }}  
 [Read More]({{ post.url }})
 ---
 {% endfor %}
