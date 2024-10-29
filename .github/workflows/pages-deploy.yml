@@ -35,6 +35,11 @@ jobs:
           # If using the 'assets' git submodule from Chirpy Starter, uncomment above
           # (See: https://github.com/cotes2020/chirpy-starter/tree/main/assets)
 
+      - name: Copy Practical Malware Analyis READMEs to _includes
+        run: |
+          mkdir -p _includes/practical-malware-analysis-solutions
+          cp -r practical-malware-analysis-solutions _includes/practical-malware-analysis-solutions
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
