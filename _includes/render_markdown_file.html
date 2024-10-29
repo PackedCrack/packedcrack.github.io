@@ -1,5 +1,0 @@
-{% assign file_path = include.file %}
-{% capture file_content %}
-{% include_relative {{ file_path }} %}
-{% endcapture %}
-{{ file_content | markdownify }}
