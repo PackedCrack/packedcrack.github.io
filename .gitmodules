@@ -1,3 +1,6 @@
 [submodule "assets/lib"]
 	path = assets/lib
 	url = https://github.com/cotes2020/chirpy-static-assets.git
+[submodule "practical-malware-analysis-solutions"]
+	path = practical-malware-analysis-solutions
+	url = https://github.com/PackedCrack/practical-malware-analysis-solutions
