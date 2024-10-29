@@ -38,7 +38,7 @@ jobs:
       - name: Copy Practical Malware Analyis READMEs to _includes
         run: |
           mkdir -p _includes/practical-malware-analysis-solutions
-          cp -r practical-malware-analysis-solutions _includes/practical-malware-analysis-solutions
+          cp -r practical-malware-analysis-solutions/* _includes/practical-malware-analysis-solutions/
 
       - name: Setup Pages
         id: pages
