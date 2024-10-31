@@ -35,6 +35,15 @@ jobs:
           # If using the 'assets' git submodule from Chirpy Starter, uncomment above
           # (See: https://github.com/cotes2020/chirpy-starter/tree/main/assets)
 
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          
+      - name: Cleaning up submodule readme links
+        run: |
+          python readme-cleaner.py
+
       - name: Copy Practical Malware Analyis READMEs to _includes
         run: |
           mkdir -p _includes/practical-malware-analysis-solutions
