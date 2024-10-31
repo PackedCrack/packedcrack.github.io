@@ -4,3 +4,6 @@
 [submodule "practical-malware-analysis-solutions"]
 	path = practical-malware-analysis-solutions
 	url = https://github.com/PackedCrack/practical-malware-analysis-solutions
+[submodule "malware-injection-techniques"]
+	path = malware-injection-techniques
+	url = https://github.com/PackedCrack/malware-injection-techniques

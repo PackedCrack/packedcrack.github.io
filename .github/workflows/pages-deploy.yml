@@ -40,6 +40,11 @@ jobs:
           mkdir -p _includes/practical-malware-analysis-solutions
           cp -r practical-malware-analysis-solutions/* _includes/practical-malware-analysis-solutions/
 
+      - name: Copy Malware Injection Techniques READMEs to _includes
+        run: |
+          mkdir -p _includes/malware-injection-techniques
+          cp -r malware-injection-techniques/* _includes/malware-injection-techniques/
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
