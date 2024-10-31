@@ -22,9 +22,9 @@ def process_malware_injection_technique_readmes(rootDir: str):
     rootDir += ''
 
     replacements = {
-        r'\[Direct Injection\]\(.*?\)': '[Direct Injection](2024-08-14-malware-inject.md)',
-        r'\[DLL Injection\]\(.*?\)': '[DLL Injection](2024-08-11-malware-inject.md)',
-        r'\[DLL Injection example\]\(.*?\)': '[DLL Injection](2024-08-11-malware-inject.md)',
+        r'\[Direct Injection\]\(.*?\)': '[Direct Injection](malware-inject-dir-inject.md)',
+        r'\[DLL Injection\]\(.*?\)': '[DLL Injection](malware-inject-dll-inject.md)',
+        r'\[DLL Injection example\]\(.*?\)': '[DLL Injection](malware-inject-dll-inject.md)',
         r'\[dummy target\]\(.*?\)': 'dummy target'
     }
 
