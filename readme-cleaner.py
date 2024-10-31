@@ -28,7 +28,7 @@ def process_malware_injection_technique_readmes(rootDir: str):
         r'\[dummy target\]\(.*?\)': 'dummy target'
     }
 
-    process_files(replacements)
+    process_files(rootDir, replacements)
 
 
 rootDir = os.getcwd()
