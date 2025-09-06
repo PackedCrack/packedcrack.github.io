@@ -1,7 +1,6 @@
 # _data/locales/en.yml
 copyright:
   license:
+    template: "This post is licensed under :LICENSE_NAME by the author."
     name: "CC BY-NC-ND 4.0"
     link: "https://creativecommons.org/licenses/by-nc-nd/4.0/"
-    # The theme replaces :LICENSE with a linked version of name
-    template: "This post is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) by the author."
