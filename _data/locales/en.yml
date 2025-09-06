@@ -1,0 +1,4 @@
+# _data/locales/en.yml
+copyright:
+  brief: 'This post is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) by the author.'
+  verbose: 'Except where otherwise noted, the blog posts on this site are licensed under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0/) License by the author.'
