@@ -1,10 +1,18 @@
 ---
-title: "Google Updater: DLL Sideloading"
+title: "Malware Analysis: Multi-Stage Windows Spyware"
 date: 2025-10-06 15:13:00 +0100
 categories: [Malware Analysis]
 tags: [malware analysis, cyber security, digital forensics, pdf]
 ---
-
+<h1>Executive Summary</h1>
+<p>The malware quietly installs three files and abuses a legitimate Google updater tool to launch spyware.
+The installer hides the installed files in the user’s hidden Templates directory. The malware is installed
+in such a way that it will automatically start when Windows starts, guaranteeing persistence across
+computer restarts. The payload can record keystrokes, take screenshots, list and control windows, and
+elevate access to inspect other processes. It uses a custom network protocol to contact a control server at
+website.baesystems.ca:8001. When running, it allows the attacker to remotely monitor and control
+the computer. This could allow the attacker to access sensitive information such as credentials or business
+secrets.</p>
 <p><a href="/assets/pdf/google_sideloading_report.pdf">Fullscreen</a></p>
 
 <iframe
