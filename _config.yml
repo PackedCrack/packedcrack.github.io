@@ -16,7 +16,7 @@ timezone: Europe/Berlin
 
 title: PackedCrack's Grimoire # the main title
 
-tagline: The Arcana of Cyber Alchemy # it will display as the subtitle
+tagline: Malware Analysis, Reverse Engineering, Offensive Security # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
