@@ -1,6 +1,6 @@
 ---
 title: "Unpacking Morphine"
-date: 2025-06-19 09:28:15 +0100
+date: 2026-06-19 09:28:15 +0100
 categories: [Malware Analysis, Reverse Engineering, Malware Obfuscation, Malware Evasion]
 tags: [malware, malware evasion, reverse engineering]
 ---
