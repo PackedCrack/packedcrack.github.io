@@ -1,7 +1,7 @@
 ---
 title: "Evading Static Detection with Compilation"
 date: 2025-03-25 15:50:15 +0100
-categories: [Malware Research, Malware Evasion]
+categories: [Detection Evasion Research, Malware Evasion]
 tags: [malware, malware evasion, programming, cybersecurity, offensive security]
 ---
 
