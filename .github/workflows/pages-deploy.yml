@@ -64,10 +64,44 @@ jobs:
           ruby-version: 3.3
           bundler-cache: true
 
+
+
+      - name: Debug source tabs
+        run: |
+          echo "Current commit:"
+          git rev-parse HEAD
+
+          echo "Files in _tabs:"
+          find _tabs -maxdepth 1 -type f -print -exec echo "---" \; -exec sed -n '1,20p' {} \;
+
+          echo "Raw portfolio bytes:"
+          python - <<'PY'
+                from pathlib import Path
+          p = Path("_tabs/portfolio.md")
+          print("exists:", p.exists())
+          if p.exists():
+              print("repr first 200 chars:")
+              print(repr(p.read_text(encoding="utf-8")[:200]))
+          PY
+
+
+
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: "production"
+
+
+
+      - name: Debug generated site
+        run: |
+          echo "Generated top-level directories:"
+          find _site -maxdepth 2 -type f | sort | grep 'index.html' || true
+
+          echo "Searching for Portfolio text:"
+          grep -R "Portfolio" _site || true
+
+
 
       - name: Check generated portfolio page
         run: |
