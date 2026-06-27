@@ -69,6 +69,15 @@ jobs:
         env:
           JEKYLL_ENV: "production"
 
+      - name: Check generated portfolio page
+        run: |
+          echo "Base path: ${{ steps.pages.outputs.base_path }}"
+          echo "Generated pages:"
+          find "_site${{ steps.pages.outputs.base_path }}" -maxdepth 3 -type f | sort | grep -E '/(portfolio|about|archives|categories|tags)/index\.html' || true
+
+          echo "Checking portfolio:"
+          test -f "_site${{ steps.pages.outputs.base_path }}/portfolio/index.html"
+
       - name: Test site
         run: |
           bundle exec htmlproofer _site \
