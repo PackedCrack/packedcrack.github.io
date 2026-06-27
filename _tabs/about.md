@@ -1,7 +1,7 @@
 ---
 # the default layout is 'page'
 icon: fas fa-info-circle
-order: 4
+order: 5
 ---
 
 I publish malware-analysis and reverse-engineering work under the alias PackedCrack. I keep this public identity separate from my legal name for privacy. For hiring, collaboration, or verification, I can confirm ownership privately.
