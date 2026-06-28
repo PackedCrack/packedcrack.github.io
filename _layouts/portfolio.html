@@ -1,0 +1,15 @@
+---
+layout: default
+---
+
+{% include lang.html %}
+
+<div id="post-list" class="flex-grow-1 px-xl-1">
+  {% for section in site.data.portfolio.sections %}
+    <h2 class="mt-4 mb-3">{{ section.title }}</h2>
+
+    {% for item in section.items %}
+      {% include portfolio-card.html item=item %}
+    {% endfor %}
+  {% endfor %}
+</div>
