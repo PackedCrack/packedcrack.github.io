@@ -4,26 +4,22 @@ sections:
       - title: Unpacking Morphine
         url: /posts/unpacking-morphine/
         summary: Manual unpacking of a Morphine-packed Windows executable, including OEP discovery, dumping, import reconstruction, PE repair, and loader/decryption analysis.
-        type: Blog post
         signals: PE analysis · unpacking · OEP recovery · import restoration · debugging
 
       - title: Malware Analysis - Multi-Stage Windows Spyware
         url: /posts/google-sideloading/
         summary: Malware-analysis report covering side-loading, persistence, payload behavior, registry artifacts, network behavior, and IOCs.
-        type: Blog post + PDF report
         signals: Malware analysis · DLL side-loading · persistence · IOCs · host artifacts
 
       - title: Evading Static Detection with Compilation
         url: /posts/copmilation-evasion-light/
         summary: Research writeup investigating how compiler flags can produce machine-code variation that affects static malware detection.
-        type: Research post
         signals: Static detection · compiler flags · malware variation · opcode-level analysis
 
       - title: Compiler-Induced Feature Drift in Static Malware Analysis
         url: https://github.com/PackedCrack/master_thesis
         external: true
         summary: Thesis project on opcode feature drift, compiler settings, IDA-based feature extraction, and robustness implications for static malware-analysis pipelines.
-        type: Thesis / research repository
         signals: Static malware analysis · opcode n-grams · IDA Python · feature drift · MSVC
 
   - title: Applied Cybersecurity Work
@@ -32,13 +28,11 @@ sections:
         url: https://github.com/PackedCrack/malware-injection-techniques
         external: true
         summary: Four-part Windows internals and offensive-security series implementing process hollowing, DLL injection, direct injection, and inline hooking in C/C++.
-        type: Blog series + repository
         signals: Win32 API · process memory · code injection · runtime patching · C/C++
 
       - title: Custom BadUSB Firmware
         url: /posts/badusb/
         summary: Offensive embedded-security project implementing custom BadUSB-style firmware using ESP32-S3, TinyUSB, HID behavior, CDC serial, and custom firmware logic.
-        type: Blog post
         signals: Offensive security · embedded security · USB · HID · TinyUSB · ESP32-S3
 
   - title: Low-Level Software & Tooling
@@ -47,19 +41,16 @@ sections:
         url: https://github.com/PackedCrack/Odin-Game-Engine
         external: true
         summary: Work-in-progress C++ game engine using Vulkan, compute shaders, GPU-driven rendering, ECS, and engine architecture.
-        type: Repository
         signals: C++ · Vulkan · GPU-driven rendering · ECS · systems programming
 
       - title: Ubiquitous Chainsaw
         url: https://github.com/PackedCrack/ubiquitous-chainsaw
         external: true
         summary: Proximity-based authentication proof of concept using BLE between a desktop client and microcontroller access token.
-        type: Repository
         signals: C++ · BLE · ESP32-S3 · authentication · embedded systems
 
       - title: FreeRADIUS Log Watcher
         url: https://github.com/PackedCrack/freeradius-log-watcher
         external: true
         summary: Debugging and operational visibility tool for FreeRADIUS logs, built to inspect authentication behavior and troubleshoot RADIUS deployments.
-        type: Repository
         signals: C++ · Linux tooling · log parsing · FreeRADIUS · authentication infrastructure
