@@ -1,5 +1,5 @@
 sections:
-  - title: Reverse Engineering & Malware Analysis
+  - title: Malware Analysis & Reverse Engineering
     items:
       - title: Unpacking Morphine
         url: /posts/unpacking-morphine/
@@ -24,8 +24,8 @@ sections:
 
   - title: Applied Cybersecurity Work
     items:
-      - title: Malware Injection Techniques
-        url: https://github.com/PackedCrack/malware-injection-techniques
+      - title: Code Injection Techniques
+        url: https://packedcrack.github.io/tags/windows-internals/
         external: true
         summary: Four-part Windows internals and offensive-security series implementing process hollowing, DLL injection, direct injection, and inline hooking in C/C++.
         signals: Win32 API · process memory · code injection · runtime patching · C/C++
