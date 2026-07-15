@@ -52,7 +52,7 @@ Interestingly, the crackme has its own child process but it is the parent that c
 
 ![child](../images/fra-re-challenge/childprocess.png)
 
-Its possible to attach the debugger to the child process, but when attempting to attach it to the parent it fails because the process is already being debugged. This is an anti-debug technique that is fairly well documented. The basic idea is that the original binary calls `CreateProcessA` to launch a new process. This could be a new executable or re-launch itself and then branch based on provided command line arguments. 
+It's possible to attach the debugger to the child process, but when attempting to attach it to the parent it fails because the process is already being debugged. This is an anti-debug technique that is fairly well documented. The basic idea is that the original binary calls `CreateProcessA` to launch a new process. This could be a new executable or re-launch itself and then branch based on provided command line arguments. 
 
 The child process will attempt to open a handle to the parent process, and if successful, call `DebugActiveProcess`. The child then has its own application loop that repeatedly calls `WaitForDebugEvent` and `ContinueDebugEvent`.
 
@@ -60,13 +60,13 @@ This likely means that the child process is just an anti-debug helper, and the k
 
 ## 2. Analysis
 
-Inspecting the crackme in PE-Bear immediately highlights that its very likely that this binary is packed. The executable is clearly missing expected sections such as `.data` and `.rdata`. In their place there are three sections called `%*s%*s%s`, two of which have execute permissions.
+Inspecting the crackme in PE-Bear immediately highlights that it's very likely that this binary is packed. The executable is clearly missing expected sections such as `.data` and `.rdata`. In their place there are three sections called `%*s%*s%s`, two of which have execute permissions.
 
 ![probpacked](../images/fra-re-challenge/probpacked.png)
 
 ### 2.1 Unpacking
 
-If the crackme is opened and ran in the debugger than it immediately crashes. The crash happens because the `EIP` points to garbage. Considering one anti-debug technique has already been identified, its likely that there are more. The first prevented attaching a debugger, the code itself likely has anti-debug that prevents launching it from a debugger as well.
+If the crackme is opened and ran in the debugger then it immediately crashes. The crash happens because the `EIP` points to garbage. Considering one anti-debug technique has already been identified, it's likely that there are more. The first prevented attaching a debugger, the code itself likely has anti-debug that prevents launching it from a debugger as well.
 
 ![garbage](../images/fra-re-challenge/garbage.png)
 
@@ -141,13 +141,13 @@ However, the instruction is commonly used in anti-vm techniques because hypervis
 
 ![ininstr](../images/fra-re-challenge/ininstr.png)
 
-There is a lot about the surrounding code that is interesting for varying reasons. For example, x86dbg shows that before executing `IN` the code called resolved the address to the Win32 function `OutputDebugStringA`. The code is also accessing the `IsBeingDebugged` field in the PEB again. This code is likely a collection of anti-debug and anti-vm techniques.
+There is a lot about the surrounding code that is interesting for varying reasons. For example, x86dbg shows that before executing `IN` the code called resolved the address to the Win32 function `OutputDebugStringA`. The code is also accessing the `BeingDebugged` field in the PEB again. This code is likely a collection of anti-debug and anti-vm techniques.
 
 To start, the `IN` instruction can be patched by a single `NOP`, then followed by placing a hardware execution breakpoint on the call to `OutputDebugStringA` just before it.
 
-Rerunning the program will then reveal that `OutputDebugStringA` is called with `%s%s%s%s%s%s%s%s`. This is an anti-debug technique directed against OllyDbg that causes it to crash. However, x86dbg is not affected by this bug so its safe to ignore unless you run OllyDbg.
+Rerunning the program will then reveal that `OutputDebugStringA` is called with `%s%s%s%s%s%s%s%s`. This is an anti-debug technique directed against OllyDbg that causes it to crash. However, x86dbg is not affected by this bug so it's safe to ignore unless you run OllyDbg.
 
-The code then accesses `IsBeingDebugged` in the PEB again. What it does is a conditional assignment. If the process is being debugged then it stores `0xD`, if the process is not being debugged then it stores `0xC`. From this code alone it is not clear what the purpose is. Therefore, its a good idea to place a hardware access breakpoint on the memory address of `IsBeingDebugged`.
+The code then accesses `BeingDebugged` in the PEB again. What it does is a conditional assignment. If the process is being debugged then it stores `0xD`, if the process is not being debugged then it stores `0xC`. From this code alone it is not clear what the purpose is. Therefore, it's a good idea to place a hardware access breakpoint on the memory address of `BeingDebugged`.
 
 Next up is the `IN` instruction to check if the program is running in VMWare. If the progam is running in VMWare, then the code `XOR` the meme value BAADCODE (0xBAADC0DE) with some memory address. The code likely sets some global state depending on whether it identified a VM or not. Interestingly, there is another such meme value (BAADIDEA) being `XOR` to the same memory address further down.
 
@@ -165,7 +165,7 @@ The simplest solution to these anti-vm checks is likely to `NOP` the branch that
 
 #### 2.1.5 Dumping the Process
 
-Continuing executing the program after patching the anti-vm checks will trigger the breakpoint on the tail jump. The access breakpoint set on the `IsBeingDebugged` field is never hit, so the reason it was assigned a value will remain a mystery for now. Scylla can successfully dump and restore the IAT for the address that the tail jump targets. 
+Continuing executing the program after patching the anti-vm checks will trigger the breakpoint on the tail jump. The access breakpoint set on the `BeingDebugged` field is never hit, so the reason it was assigned a value will remain a mystery for now. Scylla can successfully dump and restore the IAT for the address that the tail jump targets. 
 
 ![scylla1](../images/fra-re-challenge/scylla-dump.png)
 
@@ -270,7 +270,7 @@ This is the second stage of the encoding algorithm. It checks that the produced 
 
 The integrity value is produced as a byproduct of the key, and the key is checked directly to a specific byte sequence, therefore if the key is correct the integrity value should be correct. Thus, the second stage should pass automatically as long as the cookie value has not been modified by any anti-vm/debug checks.
 
-The key itself can be brute forced quite easily because its a trivial `XOR` encoding without chaining. Plainly said, each character is independent and can therefore be solved on their own. 
+The key itself can be brute forced quite easily because it's a trivial `XOR` encoding without chaining. Plainly said, each character is independent and can therefore be solved on their own. 
 
 
 ````python
@@ -344,7 +344,7 @@ for i in range(0, len(matches)):
     row += 1
 ````
 
-If the code above is run then it becomes apparent that the first stage accepts multiple keys. However, one combination of characters sticks out: `ClevernessIsNotWisdow`. This is likely the first part of the key.
+If the code above is run then it becomes apparent that the first stage accepts multiple keys. However, one combination of characters sticks out: `ClevernessIsNotWisdom`. This is likely the first part of the key.
 
 
 ![encodelayer2](../images/fra-re-challenge/decode.png)
@@ -438,7 +438,7 @@ What follows after the base64 decoding is also very revealing. First, the full i
 
 #### 2.2.6 Access Violation Dispatch
 
-Inspecting the code body of the child process then such a case does exist. What is interesting here is the initial if statement that checks to make sure that the value in `EAX` is zero. This proves that the `SUB` instruction is really a `CMP` and that the code checks to confirm that the base64 decoded value is the current time. What was decoded was the second part of the key, which means that the second part of the key should be the current time value encoded as base 64.
+Inspecting the code body of the child process then such a case does exist. What is interesting here is the initial if statement that checks to make sure that the value in `EAX` is zero. This proves that the `SUB` instruction is really used as a `CMP` and that the code checks to confirm that the base64 decoded value is the current time. What was decoded was the second part of the key, which means that the second part of the key should be the current time value encoded as base 64.
 
 
 ![accessviolation](../images/fra-re-challenge/accessviolation.png)
@@ -447,7 +447,7 @@ The function itself that the child redirects execution to accesses the full inpu
 
 ![inputarg](../images/fra-re-challenge/inputarg.png)
 
-That function has yet another `XOR` decoding algorithm inside. This time it loops over a chunk of memory and uses the first part of the key as a 21 character `XOR` key. This means that even though the python script that brute forced multiple possible inputs, its likely that only one is correct.
+That function has yet another `XOR` decoding algorithm inside. This time it loops over a chunk of memory and uses the first part of the key as a 21 character `XOR` key. This means that even though the python script that brute forced multiple possible inputs, it's likely that only one is correct.
 
 ![final1](../images/fra-re-challenge/final1.png)
 
@@ -479,7 +479,7 @@ Below is an example of code that can be used to patch this specific `INT 3`. The
 		call 0x53D000
 	
 0x53D000:								; .text section used by the Packer
-		push 
+		push 5
 		call dbg_bp_dispatch_id_2
 		add esp, 4
 		ret
@@ -504,7 +504,7 @@ Notepad is then launched, opening `congrats.txt` due to the passed command line 
 
 ## 3. Keygen
 
-The analysis has made it clear that the key consists of two parts. Part one is a 21 character long string and is likely `ClevernessIsNotWisdom`. The second part is the base64 encoded timestamp. Its not really clear how a user would be able to enter this in a legitimate key/license input considering that the value changes every time you launch the process, but that might be beyond the point.. The important part is the fact that this is a runtime value so you can't know it before hand or brute force it. Therefore, the easiest way to obtain it is simply reading it directly from the process as it is live.
+The analysis has made it clear that the key consists of two parts. Part one is a 21 character long string and is likely `ClevernessIsNotWisdom`. The second part is the base64 encoded timestamp. It's not really clear how a user would be able to enter this in a legitimate key/license input considering that the value changes every time you launch the process, but that might be beyond the point.. The important part is the fact that this is a runtime value so you can't know it before hand or brute force it. Therefore, the easiest way to obtain it is simply reading it directly from the process as it is live.
 
 The code below will open a handle to the processes with the PID provided as the first command line argument. Once opened, it will read the base64 value directly and print the full key.
 
