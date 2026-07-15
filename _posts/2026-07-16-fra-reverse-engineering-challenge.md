@@ -1,6 +1,6 @@
 ---
 title: "FRA Reverse Engineering Challenge"
-date: 2026-07-16 00:18:43 +0100
+date: 2026-07-15 00:18:43 +0100
 categories: [Reverse Engineering, Crackme]
 tags: [CTF, packing, obfuscation, reverse engineering, ida pro, x64dbg, encryption, pe-bear, binary patching, IDA Python]
 ---
