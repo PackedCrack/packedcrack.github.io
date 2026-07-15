@@ -22,10 +22,10 @@ The Swedish government agency FRA (National Defence Radio Establishment in Engli
 	- [2.1 Unpacking](#21-unpacking)
         - [2.1.1 Anti-Debug PEB Check](#211-anti-debug-peb-check)
         - [2.1.2 XOR Decoding Mapped Sections](#212-xor-decoding-mapped-sections)
-        - [2.1.3 Tail Jump?](#213-tail-jump?)
+        - [2.1.3 Possible Tail Jump](#213-possible-tail-jump)
 		- [2.1.4 Anti-VM Bypass](#214-anti-vm-bypass)
 		- [2.1.5 Dumping the Process](#215-dumping-the-process)
-		- [2.1.6 Fixing the PE File](#216-fixing-the-pe-file)
+		- [2.1.6 Fixing the Dumped PE File](#216-fixing-the-dumped-pe-file)
     - [2.2 Static Analysis](#22-static-analysis)
         - [2.2.1 The Application Loop](#221-the-application-loop)
         - [2.2.2 Initial Encoding](#222-initial-encoding)
@@ -126,7 +126,7 @@ Note that the script does not `XOR` the full range because it would result in a 
 
 
 
-#### 2.1.3 Tail Jump?
+#### 2.1.3 Possible Tail Jump
 
 
 The interesting part about these new code blocks that appeared after having been decoded, are that it contains what looks like a tail jump.
@@ -171,7 +171,7 @@ Continuing executing the program after patching the anti-vm checks will trigger 
 
 By opening the dumped file in IDA, its auto analysis successfully identifies `start`as the function that was called by the suspected tail jump. The tailjump is thus confirmed as leading to the OEP. However, if the file is executed it will crash in the CRT initialisation code. Specifically, the crash occurs inside a call to `InterlockedIncrement`.
 
-#### 2.1.6 Fixing the Dumped File
+#### 2.1.6 Fixing the Dumped PE File
 
 The CRT initialisation code is fairly small, therefore the path taken through its CFG during runtime can be traced manually and cross compared to the packed variant. If this is done then it becomes clear that the path diverges at three locations. All three divergences happen when reading some value at an absolute address. This likely means that there is data in the `.data` or `.rdata` sections that has been carried over from the dumped process. Therefore, these values has to be patched manually.
 
