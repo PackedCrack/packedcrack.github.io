@@ -1,28 +1,31 @@
 sections:
-  - title: Malware Analysis & Reverse Engineering
+  - title: Reverse Engineering
     items:
+      - title: FRA Reverse Engineering Challenge
+        url: /posts/fra-reverse-engineering-challenge/
+        summary: Solution to FRA's packed crackme that uses parent-child debugger interaction, PEB and hypervisor-based anti-analysis checks, encrypted executable code and exception-driven control-flow obfuscation.
+        signals: IDA Pro · IDA Python · PE analysis · unpacking · OEP recovery · import restoration · debugging
+
       - title: Unpacking Morphine
         url: /posts/unpacking-morphine/
         summary: Manual unpacking of a Morphine-packed Windows executable, including OEP discovery, dumping, import reconstruction, PE repair, and loader/decryption analysis.
         signals: PE analysis · unpacking · OEP recovery · import restoration · debugging
 
-      - title: Malware Analysis - Multi-Stage Windows Spyware
+
+  - title: Malware Analysis
+    items:
+      - title: Multi-Stage Windows Spyware
         url: /posts/google-sideloading/
         summary: Malware-analysis report covering side-loading, persistence, payload behavior, registry artifacts, network behavior, and IOCs.
         signals: Malware analysis · DLL side-loading · persistence · IOCs · host artifacts
 
-      - title: Evading Static Detection with Compilation
-        url: /posts/copmilation-evasion-light/
-        summary: Research writeup investigating how compiler flags can produce machine-code variation that affects static malware detection.
-        signals: Static detection · compiler flags · malware variation · opcode-level analysis
+#      - title: Compiler-Induced Feature Drift in Static Malware Analysis
+#        url: https://github.com/PackedCrack/master_thesis
+#        external: true
+#        summary: Thesis project on opcode feature drift, compiler settings, IDA-based feature extraction, and robustness implications for static malware-analysis pipelines.
+#        signals: Static malware analysis · opcode n-grams · IDA Python · feature drift · MSVC
 
-      - title: Compiler-Induced Feature Drift in Static Malware Analysis
-        url: https://github.com/PackedCrack/master_thesis
-        external: true
-        summary: Thesis project on opcode feature drift, compiler settings, IDA-based feature extraction, and robustness implications for static malware-analysis pipelines.
-        signals: Static malware analysis · opcode n-grams · IDA Python · feature drift · MSVC
-
-  - title: Applied Cybersecurity Work
+  - title: Offensive Security
     items:
       - title: Code Injection Techniques
         url: https://packedcrack.github.io/tags/windows-internals/
@@ -35,22 +38,22 @@ sections:
         summary: Offensive embedded-security project implementing custom BadUSB-style firmware using ESP32-S3, TinyUSB, HID behavior, CDC serial, and custom firmware logic.
         signals: Offensive security · embedded security · USB · HID · TinyUSB · ESP32-S3
 
-  - title: Low-Level Software & Tooling
-    items:
-      - title: Odin Game Engine
-        url: https://github.com/PackedCrack/Odin-Game-Engine
-        external: true
-        summary: Work-in-progress C++ game engine using Vulkan, compute shaders, GPU-driven rendering, ECS, and engine architecture.
-        signals: C++ · Vulkan · GPU-driven rendering · ECS · systems programming
+  #- title: Low-Level Software & Tooling
+    #items:
+      #- title: Odin Game Engine
+      #  url: https://github.com/PackedCrack/Odin-Game-Engine
+      #  external: true
+      #  summary: Work-in-progress C++ game engine using Vulkan, compute shaders, GPU-driven rendering, ECS, and engine architecture.
+      #  signals: C++ · Vulkan · GPU-driven rendering · ECS · systems programming
 
-      - title: Ubiquitous Chainsaw
-        url: https://github.com/PackedCrack/ubiquitous-chainsaw
-        external: true
-        summary: Proximity-based authentication proof of concept using BLE between a desktop client and microcontroller access token.
-        signals: C++ · BLE · ESP32-S3 · authentication · embedded systems
+      #- title: Ubiquitous Chainsaw
+      #  url: https://github.com/PackedCrack/ubiquitous-chainsaw
+      #  external: true
+      #  summary: Proximity-based authentication proof of concept using BLE between a desktop client and microcontroller access token.
+      #  signals: C++ · BLE · ESP32-S3 · authentication · embedded systems
 
-      - title: FreeRADIUS Log Watcher
-        url: https://github.com/PackedCrack/freeradius-log-watcher
-        external: true
-        summary: Debugging and operational visibility tool for FreeRADIUS logs, built to inspect authentication behavior and troubleshoot RADIUS deployments.
-        signals: C++ · Linux tooling · log parsing · FreeRADIUS · authentication infrastructure
+      #- title: FreeRADIUS Log Watcher
+      #  url: https://github.com/PackedCrack/freeradius-log-watcher
+      #  external: true
+      #  summary: Debugging and operational visibility tool for FreeRADIUS logs, built to inspect authentication behavior and troubleshoot RADIUS deployments.
+      #  signals: C++ · Linux tooling · log parsing · FreeRADIUS · authentication infrastructure
